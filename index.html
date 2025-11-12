@@ -176,7 +176,7 @@
         position: sticky;
         top: 0;
         z-index: 100;
-        height: 65px;
+        height: 75px; /* MODIFIED: Increased height for new logo */
       }
       body[data-role="agent"] header {
         border-bottom-color: var(--konecta-dark);
@@ -192,8 +192,8 @@
         overflow: hidden;
       }
       .logo-container {
-        width: 120px; 
-        height: 40px;
+        width: 150px; /* MODIFIED: Increased width */
+        height: 50px; /* MODIFIED: Increased height */
         border-radius: 6px;
         overflow: hidden;
         background-color: #ffffff; /* Always white for logo BG */
@@ -344,7 +344,7 @@
       .app-container {
         display: flex;
         flex-grow: 1;
-        height: calc(100vh - 65px); /* Full height minus header */
+        height: calc(100vh - 75px); /* MODIFIED: Full height minus new header height */
       }
       
       #app-sidebar {
@@ -385,28 +385,30 @@
       }
       
       .tab-button {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 10px 12px;
-        font-size: 0.9rem;
-        font-weight: 500;
-        cursor: pointer;
-        border: none;
-        border-radius: 6px;
-        background-color: transparent;
-        color: var(--text-color);
-        width: 100%;
-        margin-bottom: 4px;
-        text-align: left;
-        transition: background-color 0.2s ease, color 0.2s ease;
-      }
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      border-radius: 6px;
+      background-color: transparent;
+      color: var(--text-color);
+      width: 100%;
+      margin-bottom: 4px;
+      text-align: left;
+      transition: background-color 0.2s ease, color 0.2s ease;
+      justify-content: flex-start; /* <-- ADD THIS LINE */
+    }
       .tab-button .nav-icon {
         width: 20px;
         height: 20px;
         flex-shrink: 0;
         stroke-width: 2;
         color: var(--text-color-secondary);
+        margin: 0;
       }
       .tab-button:hover {
         background-color: var(--input-bg);
@@ -1046,7 +1048,7 @@
           display: none; /* Hide text */
         }
         #app-sidebar .nav-icon {
-          margin: 0 auto; /* Center icon */
+          margin: 0; /* MODIFIED: Left-align icon */
         }
         #app-sidebar .nav-group-title {
           text-align: center;
@@ -1086,7 +1088,9 @@
           padding: 8px;
           min-width: 80px;
         }
-        .tab-button .nav-icon { margin: 0; }
+        #app-sidebar .nav-icon {
+          margin: 0 auto; /* MODIFIED: Re-center icon for mobile bottom-bar view */
+        }
         .tab-button .nav-button-text {
           display: block;
           font-size: 0.75rem;
@@ -1126,6 +1130,19 @@
           align-items: flex-start;
           gap: 15px;
         }
+      }
+      
+      /* --- Footer --- */
+      footer {
+        text-align: center;
+        padding: 20px;
+        background-color: var(--page-bg);
+        color: var(--text-color-secondary);
+        border-top: 1px solid var(--border-color);
+        font-size: 0.8rem;
+      }
+      footer p {
+        margin: 0;
       }
       
     </style>
@@ -1203,6 +1220,11 @@
              <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg>
             <span class="nav-button-text">History Report</span>
           </button>
+          <!-- MODIFIED: Coaching tab moved here -->
+          <button id="coaching-tab-button" class="tab-button" onclick="showTab('coaching')">
+            <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            <span class="nav-button-text">Coaching</span>
+          </button>
         </div>
         
         <div class="nav-group">
@@ -1219,10 +1241,7 @@
             <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
             <span class="nav-button-text">Reporting Line</span>
           </button>
-          <button id="coaching-tab-button" class="tab-button" onclick="showTab('coaching')">
-            <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-            <span class="nav-button-text">Coaching</span>
-          </button>
+          <!-- MODIFIED: Coaching tab removed from here -->
         </div>
 
         <div class="nav-group">
@@ -1769,6 +1788,7 @@
     <footer>
       <p>KOMPASS (Konecta Operations, Management & Personnel Self-Service) - Created by Fady Bekhet</p>
     </footer>
+
 
 
     <script>
