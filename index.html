@@ -2009,7 +2009,7 @@
         if (user.accountStatus === 'Pending') {
           infoDiv.innerHTML = `<strong>User:</strong> ${user.name} | <strong>Email:</strong> ${user.email} | <strong>Account Status:</strong> <span style="color:#c53030; font-weight: 700;">Pending Approval</span>`;
           // *** HIDE ALL TABS ***
-          document.getElementById('tab-nav').style.display = 'none';
+          document.getElementById('app-sidebar').style.display = 'none';
           document.getElementById('punch-panel').innerHTML = `
             <h2 style="color: var(--konecta-blue);">Registration Pending</h2>
             <p class="text-color-secondary">Your account registration is pending final approval from an administrator. Please check back later.</p>
